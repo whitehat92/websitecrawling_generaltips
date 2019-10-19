@@ -1,0 +1,21 @@
+proxy running
+how is data transmitted in the request
+
+THEN
+
+-- beautiful soup basic stuff --
+header = {''}
+query = "wt u wanna search"
+sauce = requests.get(query, headers=header)
+soup = BeautifulSoup(sauce.content, "lxml")
+
+-- with browser automation: --
+define the path: #driver = webdriver.Firefox(executable_path='C:\Program Files\Mozilla Firefox\geckodriver.exe')
+driver.minimize_window()
+driver.get(query)
+contentdrive = driver.page_source.encode('utf-8').strip()
+
+
+-- conversion to json: --
+dumpjsonsoup = json.dumps(soup.text)
+jsoneed = json.loads(str(dumpjsonsoup))

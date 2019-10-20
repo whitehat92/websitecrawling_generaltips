@@ -19,3 +19,13 @@ contentdrive = driver.page_source.encode('utf-8').strip()
 -- conversion to json: --
 dumpjsonsoup = json.dumps(soup.text)
 jsoneed = json.loads(str(dumpjsonsoup))
+
+-- walking on json --
+soup = BeautifulSoup(sauce.content, "lxml")
+newprintableform = json.loads(str(soup.text))
+#Print everything scrapped in json
+print(newprintableform)
+#print the first element that comes in the json
+print(newprintableform[0])
+#print something inside that same element, like a subcategory
+print(newprintableform[0]["something_like_id"])
